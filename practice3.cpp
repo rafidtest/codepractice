@@ -9,7 +9,6 @@ using namespace std;
 string ltrim(const string &);
 string rtrim(const string &);
 
-//using matrixelement = variant<int, string>;
 using matrixelement = pair<int, string>;
 
 int main()
