@@ -1,15 +1,26 @@
 #include "stdc++.h"
+#include <iostream>
+#include <vector>
+#include <string>
+#include <variant>
 
 using namespace std;
 
 string ltrim(const string &);
 string rtrim(const string &);
 
-using matrixelement = variant<int, string>;
+//using matrixelement = variant<int, string>;
+using matrixelement = pair<int, string>;
 
 int main()
 {
-vector<vector<matrixelement>> matrix = {
+    string n_temp;
+    getline(cin, n_temp);
+
+    int n = stoi(ltrim(rtrim(n_temp)));
+
+    // Write your code here
+    vector<matrixelement> matrix = {
         {1, "one"},
         {2, "two"},
         {3, "three"},
@@ -18,28 +29,21 @@ vector<vector<matrixelement>> matrix = {
         {6, "six"},
         {7, "seven"},
         {8, "eight"},
-        {9, "nine"},
+        {9, "nine"}
     };
     
-    string n_temp;
-    getline(cin, n_temp);
-
-    int n = stoi(ltrim(rtrim(n_temp)));
-    
-    if (n >= 1 && n<=9) {
-        matrixelement& elem = matrix[n][1];
-        
-        visit([](auto&& arg){
-            cout << arg;
-        }, elem);
+    if (n >= 1 && n <= 9) {
+        for (const auto& row : matrix) {
+            if (row.first == n){ cout << row.second; }
+        }
     }
-    else if (n > 9) {
+    else if ( n>9 ) {
         cout << "Greater than 9";
     }
     else {
-        //do nothing
+        cout << "input outside range";
     }
-    
+
     return 0;
 }
 
